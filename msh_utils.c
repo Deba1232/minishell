@@ -32,7 +32,7 @@ void extract_external_commands(char **external_commands){
         }
         else{
             cmd_buf[buf_idx++] = *read_buf;
-        } 
+        }
     }
 
     // Capture last line if it doesn’t end with newline
@@ -70,7 +70,7 @@ char *get_command(char *input_string){
 }
 
 int check_command_type(char *command){
-    char *builtins[] = {"echo", "printf", "read", "cd", "pwd","pushd", "popd", "dirs", "let", "eval", "set", "unset", "export", "declare", "typeset", "readonly", "getopts", "source", "exit", "exec", "shopt", "caller", "true", "type", "hash", "bind", "help"};
+    char *builtins[] = {"echo", "printf", "read", "cd", "pwd","pushd", "popd", "dirs", "let", "eval", "set", "unset", "export", "declare", "typeset", "readonly", "getopts", "source", "exit", "exec", "shopt", "caller", "true", "type", "hash", "bind", "help", "jobs", "fg", "bg"};
 
     for(int i = 0; i < sizeof(builtins) / sizeof(char *); i++){
         // Check whether the command is a builtin command or not
@@ -84,6 +84,10 @@ int check_command_type(char *command){
         if(strcmp(command, external_commands[i]) == 0){
             return EXTERNAL;
         }
+    }
+
+    if(command[0] == '\n'){
+        return EMPTY_COMMAND;
     }
 
     return NO_COMMAND;

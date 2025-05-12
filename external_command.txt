@@ -19,6 +19,7 @@ chmod
 chown
 chvt
 cp
+clear
 cpio
 dash
 date
@@ -136,6 +137,8 @@ uname
 uncompress
 unicode_start
 vdir
+vi
+vim
 vmmouse_detect
 which
 whiptail

@@ -1,12 +1,13 @@
 #include "msh.h"
 
+char prompt[20];
+char input_string[20];
+
 int main(){
     system("clear");
     
     //Prompt to display
-    char prompt[20] = "minishell";
-
-    char input_string[20];
+    strcpy(prompt, "minishell");
 
     scan_input(prompt, input_string);
 
